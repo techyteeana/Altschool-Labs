@@ -24,6 +24,6 @@ My goal is to demonstrate technical proficiency in network security, cloud compl
 ---
 
 ## 📬 Contact & Connect
-* **GitHub Profile:** [techyteeana](https://github.com/your-username)
+* **GitHub Profile:** [GitHub Profile](https://github.com/techyteeana)
 * **Linkedin Link:** [www.linkedin.com/in/adeola-anthony-33a33531a]
 * **Goal:** Aspiring SOC Analyst | Penetration Tester
