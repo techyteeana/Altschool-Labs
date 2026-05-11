@@ -15,6 +15,8 @@ I didn't want the Sales team to have access to sensitive Admin files, so I broke
 *   **VLAN 20 (IT Support):** My technical "power users".
 *   **VLAN 30 (Sales):** The general staff area.
 
+*   ![VLAN Config Screenshot](./Vlan_config.png)
+
 ### 2. The "Router-on-a-Stick" Method
 To get these separate VLANs to talk to each other securely, I configured **Trunk Ports**. This allows multiple VLANs to share one physical cable to the router, where I set up sub-interfaces for each department to act as their gateway.
 
