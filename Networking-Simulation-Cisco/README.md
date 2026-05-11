@@ -15,10 +15,12 @@ I didn't want the Sales team to have access to sensitive Admin files, so I broke
 *   **VLAN 20 (IT Support):** My technical "power users".
 *   **VLAN 30 (Sales):** The general staff area.
 
-*   ![VLAN Config Screenshot](./Vlan_config.png)
+   ![VLAN Config Screenshot](./Vlan_config.png)
 
 ### 2. The "Router-on-a-Stick" Method
 To get these separate VLANs to talk to each other securely, I configured **Trunk Ports**. This allows multiple VLANs to share one physical cable to the router, where I set up sub-interfaces for each department to act as their gateway.
+
+![Inter-VLAN Configuration](./Inter_vlan_routing.png)
 
 ### 3. Secure Management (SSH over Telnet)
 A big part of this lab was securing the router itself. I disabled Telnet (because it sends passwords in plain text) and set up **SSH with 1024-bit RSA encryption** I hit a small snag with an "invalid input" error during key generation, but I learned that the CLI requires a specific order: `crypto key generate rsa`, then specifying the modulus.
@@ -38,6 +40,7 @@ When I first tested the Admin-to-Sales connection, the **ping failed**. I realiz
 
 **The Fix:** I added a specific rule to **ACL 110** to permit ICMP echo-replies. This was a huge lesson for me: in security, you have to think about the traffic coming *back*, not just the traffic going *out*.
 
+![Access Control List Configuration](./ACL_config.png)
 ---
 
 ## 🚀 Final Reflection
