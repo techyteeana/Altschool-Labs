@@ -5,7 +5,9 @@
 This project was part of my first-semester technical evaluation. The objective was to design a secure network for a mid-sized financial company by moving away from a "flat" network and building a segmented environment where departments are isolated.
 
 ## 🛠️ How I Built It
-I used a **Star Topology** with 9 PCs connected to a central switch, which then linked to a router for **Inter-VLAN routing**. 
+I used a **Star Topology** with 9 PCs connected to a central switch, which then linked to a router for **Inter-VLAN routing**.
+
+![Network Topology](./Topology.png)
 
 ### 1. Network Segmentation (VLANs)
 I didn't want the Sales team to have access to sensitive Admin files, so I broke the network into three virtual pieces:
