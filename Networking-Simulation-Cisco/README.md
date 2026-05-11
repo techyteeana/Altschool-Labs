@@ -25,6 +25,8 @@ To get these separate VLANs to talk to each other securely, I configured **Trunk
 ### 3. Secure Management (SSH over Telnet)
 A big part of this lab was securing the router itself. I disabled Telnet (because it sends passwords in plain text) and set up **SSH with 1024-bit RSA encryption** I hit a small snag with an "invalid input" error during key generation, but I learned that the CLI requires a specific order: `crypto key generate rsa`, then specifying the modulus.
 
+![SSH Login Success](./SSH_test.png)
+
 ---
 
 ## 🛡️ The "AHA!" Moment: Access Control Lists (ACLs)
