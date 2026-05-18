@@ -8,10 +8,13 @@ This project involved deploying and configuring a **Security Information and Eve
 
 ## 🛠️ Tech Stack & Skills
 * **SIEM Platform:** Wazuh 4.x (Manager & Indexer)
-* **Environment:** Ubuntu Linux (Server), Windows 10 (Agent)
+* **Environment:** Ubuntu Linux (Server), Windows 10/11 (Agent)
 * **Virtualization:** Oracle VirtualBox
 * **Security Protocols:** File Integrity Monitoring (FIM), Syscheck
 * **Tools used:** PowerShell, XML Configuration, CLI, Log Analysis
+
+![Active Windows Agent Status](./wazuh-active-agent.png)
+*Above: Wazuh dashboard confirming the Windows agent is active and successfully streaming endpoint logs to the manager.*
 
 ---
 
@@ -26,10 +29,11 @@ I realized that while the Linux server *receives* the alerts, it doesn't automat
 
 ### The Fix
 I pivoted from the Server to the **Windows Host** and performed the following:
-1.  Launched **PowerShell as Administrator**.
-2.  Modified the local agent configuration at `C:\Program Files (x86)\ossec-agent\ossec.conf`.
-3.  Updated the `<syscheck>` frequency and directory paths.
-4.  Restarted the service using `net stop wazuh` and `net start wazuh`.
+1. Launched **PowerShell as Administrator**.
+2. Modified the local agent configuration at `C:\Program Files (x86)\ossec-agent\ossec.conf`.
+3. Updated the `<syscheck>` frequency and directory paths.
+4. Restarted the service using `net stop wazuh` and `net start wazuh`.
+
 **Result:** The agent immediately synced, and alerts began appearing on the dashboard in under a minute.
 
 ---
@@ -37,12 +41,12 @@ I pivoted from the Server to the **Windows Host** and performed the following:
 ## 🧪 Verification & Testing (Proof of Concept)
 To validate the monitoring setup, I performed a manual file modification to trigger a high-severity alert.
 
-1.  **Action:** Edited `important_documentII.txt` within the monitored directory.
-2.  **Detection:** The Wazuh Manager detected the change via the agent's `syscheck` daemon.
-3.  **Analysis:** Verified the alert on the **Wazuh Dashboard** (Rule 550), which provided the exact timestamp, file path, and user account involved.
+1. **Action:** Edited `important_documentII.txt` within the monitored directory.
+2. **Detection:** The Wazuh Manager detected the change via the agent's `syscheck` daemon.
+3. **Analysis:** Verified the alert on the **Wazuh Dashboard** (Rule 550), which provided the exact timestamp, file path, and user account involved.
 
-![Wazuh Dashboard Alert](./wazuh-alert.png)
-*Above: Screenshot of the real-time FIM alert triggered during testing.*
+![File Integrity Event Timeline](./fim-alerts-timeline.png)
+*Above: The real-time security log sequence showing the exact chronological moment the monitored file was modified (Rule 550) and subsequently deleted (Rule 553) during remediation cleanup.*
 
 ---
 
@@ -51,6 +55,9 @@ To validate the monitoring setup, I performed a manual file modification to trig
 * **Endpoint Hardening:** Configured agents to monitor sensitive system directories for unauthorized changes.
 * **Incident Investigation:** Analyzed raw security events to verify system integrity.
 * **Technical Documentation:** Documented a full deployment from installation to verification.
+
+![FIM Alert Metadata and File Hashes](./fim-alert-details.png)
+*Above: Granular event details capturing file metadata, user attribution, and cryptographic hashes (SHA256/MD5) for deep forensic verification.*
 
 ---
 
