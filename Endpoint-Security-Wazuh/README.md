@@ -14,6 +14,7 @@ This project involved deploying and configuring a **Security Information and Eve
 * **Tools used:** PowerShell, XML Configuration, CLI, Log Analysis
 
 ![Active Windows Agent Status](./wazuh-active-agent.png)
+
 *Above: Wazuh dashboard confirming the Windows agent is active and successfully streaming endpoint logs to the manager.*
 
 ---
@@ -46,6 +47,7 @@ To validate the monitoring setup, I performed a manual file modification to trig
 3. **Analysis:** Verified the alert on the **Wazuh Dashboard** (Rule 550), which provided the exact timestamp, file path, and user account involved.
 
 ![File Integrity Event Timeline](./fim-alerts-timeline.png)
+
 *Above: The real-time security log sequence showing the exact chronological moment the monitored file was modified (Rule 550) and subsequently deleted (Rule 553) during remediation cleanup.*
 
 ---
@@ -57,6 +59,7 @@ To validate the monitoring setup, I performed a manual file modification to trig
 * **Technical Documentation:** Documented a full deployment from installation to verification.
 
 ![FIM Alert Metadata and File Hashes](./fim-alert-details.png)
+
 *Above: Granular event details capturing file metadata, user attribution, and cryptographic hashes (SHA256/MD5) for deep forensic verification.*
 
 ---
