@@ -14,6 +14,7 @@ I structured the infrastructure into three strictly isolated network boundaries 
 * **Tier 3: Database Tier (The Vault):** Holds sensitive transaction ledgers and customer records. This layer is completely cut off from direct internet access. I implemented **AES-256 encryption** and an independent Key Management Service (KMS) to ensure complete cryptographic isolation for data at rest.
 
 ![PayLink Africa Architecture Diagram](./paylink-architecture.png)
+
 *Above: Complete architectural blueprint detailing network segmentation, asset placement, and security perimeters.*
 
 ---
