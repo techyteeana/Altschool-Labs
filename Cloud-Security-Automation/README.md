@@ -48,12 +48,14 @@ The log data proved exactly why security automation is necessary. Looking at my 
 By the time the human analyst even opened the email notification, the automated script had already stopped the attack.
 
 ![CloudTrail Event History Log](./cloudtrail-forensic-log.png)
+
 *Above: CloudTrail log metadata capturing the unauthorized attempt to read the database credentials.*
 
 ### 2. The Attacker's View
 To confirm it worked, I tried to run follow-up commands as the attacker immediately after the secret was touched. The AWS console threw a massive red `AccessDeniedException` warning because the script had already stripped my rights.
 
 ![AWS Console Access Denied Warning](./remediation-killswitch-proof.png)
+
 *Above: Verification screenshot showing the attacker blocked by an access denial immediately after triggering the alarm.*
 
 ---
